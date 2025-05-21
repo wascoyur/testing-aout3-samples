@@ -1,18 +1,18 @@
-class PasswordVerifier1 {
-  constructor () {
+export class PasswordVerifier1 {
+  constructor() {
     this.rules = [];
   }
 
-  addRule (rule) {
+  addRule(rule) {
     this.rules.push(rule);
   }
 
-  verify (input) {
+  verify(input) {
     if (this.rules.length === 0) {
-      throw new Error('There are no rules configured');
+      throw new Error("There are no rules configured");
     }
     const errors = [];
-    this.rules.forEach(rule => {
+    this.rules.forEach((rule) => {
       const result = rule(input);
       if (result.passed === false) {
         errors.push(result.reason);
@@ -21,5 +21,3 @@ class PasswordVerifier1 {
     return errors;
   }
 }
-
-module.exports = { PasswordVerifier1 };
