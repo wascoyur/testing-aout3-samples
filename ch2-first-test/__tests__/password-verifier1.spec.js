@@ -1,12 +1,14 @@
-import {verifyPassword} from "../password-verifier0";
+import { verifyPassword } from "../password-verifier0";
 
-describe("verifyPassword", ()=>{
-    test('Получение правила, возвращает ошибку', ()=>{
-        const fakeRule = input =>({
-           passed:false, reason: 'фальшивая причина'
-        })
-
-        const errors =verifyPassword('любое значение', [fakeRule])
-        expect(errors[0]).toContain('фальшивая причина')
-    })
-})
+describe("verifyPassword", () => {
+  describe("с правилом неудачи", () => {
+    const fakeRule = (input) => ({
+      passed: false,
+      reason: "фальшивая причина",
+    });
+    test("Возврат ошибки", () => {
+      const errors = verifyPassword("любое значение", [fakeRule]);
+      expect(errors[0]).toContain("фальшивая причина");
+    });
+  });
+});
