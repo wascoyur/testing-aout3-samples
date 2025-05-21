@@ -1,4 +1,4 @@
-const verifyPassword = (input, rules) => {
+export const verifyPassword = (input, rules) => {
   const errors = [];
   rules.forEach(rule => {
     const result = rule(input);
@@ -7,8 +7,4 @@ const verifyPassword = (input, rules) => {
     }
   });
   return errors;
-};
-
-module.exports = {
-  verifyPassword
 };

@@ -1,11 +1,11 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
-  // testEnvironment: 'jest-environment-jsdom',
   testEnvironmentOptions: {
     "url": "http://localhost/"
-},
+  },
   transform: {
+    "^.+\\.js?$": "babel-jest",
     "^.+\\.ts?$": "ts-jest",
   },
 };
