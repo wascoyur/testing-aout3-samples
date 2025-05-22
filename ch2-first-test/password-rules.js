@@ -1,10 +1,6 @@
-const oneUpperCaseRule = (input) => {
+export const oneUpperCaseRule = (input) => {
   return {
-    passed: (input.toLowerCase() !== input),
-    reason: 'at least one upper case needed'
+    passed: input.toLowerCase() !== input,
+    reason: "По крайней мере, один верхний символ нужен",
   };
-};
-
-module.exports = {
-  oneUpperCaseRule
 };
