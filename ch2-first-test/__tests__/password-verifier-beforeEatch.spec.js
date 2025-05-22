@@ -10,13 +10,8 @@ describe("PasswordVerifier", () => {
       expect(result.passed).toEqual(false);
     });
 
-    it("given one uppercase, it passes", () => {
-      const result = oneUpperCaseRule("Abc");
-      expect(result.passed).toEqual(true);
-    });
-
-    it("given a diffirent uppercase, it passes", () => {
-      const result = oneUpperCaseRule("aBc");
+    it.each(["Abc", "aBc"])("given one uppercase, it passes", (input) => {
+      const result = oneUpperCaseRule(input);
       expect(result.passed).toEqual(true);
     });
   });
