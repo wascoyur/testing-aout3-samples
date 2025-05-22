@@ -5,14 +5,13 @@ const templateFakeRulePass = { passed: true, reason: "" };
 
 describe("PasswordVerifier", () => {
   describe("one upper case rule", () => {
-    it("given no uppercase, it fails", () => {
-      const result = oneUpperCaseRule("abc");
-      expect(result.passed).toEqual(false);
-    });
-
-    it.each(["Abc", "aBc"])("given one uppercase, it passes", (input) => {
+    it.each([
+      ["Abc", true],
+      ["aBc", true],
+      ["abc", false],
+    ])("given %s, %s", (input, expected) => {
       const result = oneUpperCaseRule(input);
-      expect(result.passed).toEqual(true);
+      expect(result.passed).toEqual(expected);
     });
   });
 });
