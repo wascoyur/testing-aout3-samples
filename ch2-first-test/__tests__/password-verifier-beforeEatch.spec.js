@@ -8,15 +8,12 @@ describe("PasswordVerifier", () => {
     beforeEach(() => {
       fakeRule = (input) => ({ passed: false, reason: "фальшивая причина" });
       verifer.addRule(fakeRule);
+      errors = verifer.verify("any rule");
     });
-
-    it("имеет сообщение об ошибке на основе rule.reasons", () => {
-      const errors = verifer.verify("любое значение");
+    it("сообщение ошибки на основе rule.reason", () => {
       expect(errors[0]).toContain("фальшивая причина");
     });
-
-    it("Имеет ровно одну ошибку", () => {
-      const errors = verifer.verify("любое значение");
+    it("only one error", () => {
       expect(errors.length).toBe(1);
     });
   });
