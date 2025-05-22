@@ -1,19 +1,15 @@
-const makeVerifier = (rules, logger) => {
+export const makeVerifier = (rules, logger) => {
   return (input) => {
     const failed = rules
-      .map(rule => rule(input))
-      .filter(result => result === false);
+      .map((rule) => rule(input))
+      .filter((result) => result === false);
 
     console.log(failed);
     if (failed.length === 0) {
-      logger.info('PASSED');
+      logger.info("PASSED");
       return true;
     }
-    logger.info('FAIL');
+    logger.info("FAIL");
     return false;
   };
-};
-
-module.exports = {
-  makeVerifier
 };

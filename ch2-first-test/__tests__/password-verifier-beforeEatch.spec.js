@@ -1,7 +1,7 @@
-import { PasswordVerifier1 } from "../password-verifier1";
 import { oneUpperCaseRule } from "../password-rules";
+import { PasswordVerifier1 } from "../password-verifier1";
 
-const templateFakeRulePass = { passed: true, reason: "" };
+const makeVerifier = new PasswordVerifier1();
 
 describe("PasswordVerifier", () => {
   describe("one upper case rule", () => {
@@ -13,5 +13,14 @@ describe("PasswordVerifier", () => {
       const result = oneUpperCaseRule(input);
       expect(result.passed).toEqual(expected);
     });
+  });
+
+  it("verify no rules, throws exception", () => {
+    try {
+      makeVerifier.verify("any input");
+      fail("error was expected bot not thrown");
+    } catch (e) {
+      expect(e.message).toContain("no rules configured");
+    }
   });
 });
