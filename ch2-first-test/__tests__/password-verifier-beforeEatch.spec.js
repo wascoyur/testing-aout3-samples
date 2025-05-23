@@ -17,8 +17,7 @@ describe("PasswordVerifier", () => {
 
   it("verify no rules, throws exception", () => {
     try {
-      makeVerifier.verify("any input");
-      fail("error was expected bot not thrown");
+      makeVerifier.verify("any input").toThrowError(/no rules configured/);
     } catch (e) {
       expect(e.message).toContain("no rules configured");
     }
