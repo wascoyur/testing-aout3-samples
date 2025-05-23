@@ -7,8 +7,6 @@ export const verifyPassword = (input, rules) => {
   if ([SATURDAY, SUNDAY].includes(dayOfWeek)) {
     throw Error("It's the weekend!");
   }
-  // more code goes here...
-  // return list of errors found..
   return [];
 };
 
