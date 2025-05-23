@@ -1,7 +1,8 @@
-const moment = require('moment');
-const SUNDAY = 0; const SATURDAY = 6;
+import moment from "moment";
+const SUNDAY = 0;
+const SATURDAY = 6;
 
-const verifyPassword = (input, rules) => {
+export const verifyPassword = (input, rules) => {
   const dayOfWeek = moment().day();
   if ([SATURDAY, SUNDAY].includes(dayOfWeek)) {
     throw Error("It's the weekend!");
@@ -11,7 +12,7 @@ const verifyPassword = (input, rules) => {
   return [];
 };
 
-const verifyPassword2 = (input, rules, currentDay) => {
+export const verifyPassword2 = (input, rules, currentDay) => {
   if ([SATURDAY, SUNDAY].includes(currentDay)) {
     throw Error("It's the weekend!");
   }
@@ -20,7 +21,7 @@ const verifyPassword2 = (input, rules, currentDay) => {
   return [];
 };
 
-const verifyPassword3 = (input, rules, getDayFn) => {
+export const verifyPassword3 = (input, rules, getDayFn) => {
   const dayOfWeek = getDayFn();
   if ([SATURDAY, SUNDAY].includes(dayOfWeek)) {
     throw Error("It's the weekend!");
@@ -28,10 +29,4 @@ const verifyPassword3 = (input, rules, getDayFn) => {
   // more code goes here...
   // return list of errors found..
   return [];
-};
-
-module.exports = {
-  verifyPassword,
-  verifyPassword2,
-  verifyPassword3
 };
